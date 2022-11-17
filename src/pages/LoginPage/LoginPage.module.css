@@ -1,0 +1,114 @@
+.loginContainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.loginDiv {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.registerNavigation {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: right;
+}
+
+.registerNavigationRight {
+    padding: 10px;
+    width: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.registerButton {
+    cursor: pointer;
+    width: 125px;
+    background-color: #F5757C;
+    border: none;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.registerButton a {
+    margin-top: 10px;
+    font-size: 17.5px;
+    font-weight: 700;
+    text-decoration: none;
+    color: white;
+    margin: 0 auto;
+}
+
+.registerText {
+    padding-top: 15px;
+    color: #797575;
+}
+
+.loginContentDiv {
+    width:100%;
+    height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loginContentDivCenter {
+    width: 60%;
+    height: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.loginContentDivCenter h1 {
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+    color: #000000;
+}
+
+.loginContentDivCenter h3 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    color: #F5757C;
+}
+
+.gradientDiv {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gradientInfoDiv {
+    height: 200px;
+    width: 100%;
+    text-align: center;
+    background-size: cover;
+}
+
+.gradientInfoTitleDiv h1 {
+    color: white;
+    font-weight: 700;
+    font-size: 60px;
+}
+
+.gradientInfoTextDiv {
+    padding: 20px;
+}
+
+.gradientInfoTextDiv p {
+    color: white;
+    font-weight: 100;
+    font-size: 30px;
+}
