@@ -9,3 +9,10 @@ export async function login(data) {
         data: null
     };
 }
+
+export async function register(data) {
+    console.log(client, data);
+    return {
+        data: null
+    };
+}

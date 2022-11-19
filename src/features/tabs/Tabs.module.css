@@ -1,0 +1,28 @@
+.tabsContainer {
+    width: 100%;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.tab {
+    padding-top: 2px;
+    box-sizing: border-box;
+    height: 100%;
+    text-align: center;
+    border: 1px solid #DD8C9A;
+    color: #DD8C9A;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.currentTab {
+    padding-top: 2px;
+    box-sizing: border-box;
+    height: 100%;
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    font-size: 15px;
+    background-color: #DD8C9A;
+}
