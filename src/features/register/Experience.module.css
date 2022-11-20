@@ -1,0 +1,162 @@
+.experienceContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.experienceTitle {
+    height: 30px;
+    font-size: 20px;
+    padding-top: 20px;
+    font-weight: 300;
+}
+
+.experienceStaging {
+    width: 100%;
+    height: 75%;
+    min-height: 350px;
+    display: flex;
+    flex-direction: row;
+}
+
+.experienceLeft {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.experienceLabel {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.experienceInput {
+    font-size: 15px;
+    padding: 2px;
+    box-sizing: border-box;
+    height: 30px;
+    border: 1px solid #D5D4D4;
+    width: 90%;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.experienceDate {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.experienceSubmit {
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 90px;
+    height: 40px;
+    color: #F5757C;
+    background: #FFFFFF;
+    border: 1px solid #F5757C;
+}
+
+.experienceRight {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    border: 1px solid #D5D4D4;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.experienceAdded {
+    box-sizing: border-box;
+    width: 100%;
+    height: 90px;
+    border: 1px solid #D5D4D4;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.experienceAddedInfo {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.experienceAddedInfo p {
+    font-size: 20px;
+    margin: 0 0 0 10px;
+}
+
+.experienceAddedButtons {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.experienceAddedButtons div {
+    cursor: pointer;
+    width:  50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.experienceAddedButtons div img{
+    margin: 0 auto;
+    width: 20px;
+    height: auto;
+}
+
+.experienceAddedButtonsEdit {
+    box-sizing: border-box;
+    border: 1px solid #F5757C;
+    background-color: transparent;
+}
+
+.experienceAddedButtonsDelete {
+    border: none;
+    background-color: #F5757C;
+}
+
+.experienceFooter {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.experienceButtonContainer {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.experienceClearButton {
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 130px;
+    height: 50px;
+    color: #F5757C;
+    background: #FFFFFF;
+    border: 1px solid #F5757C;
+}
+
+.experienceNextButton {
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 130px;
+    height: 50px;
+    color: #FFFFFF;
+    background: #F5757C;
+    border: none;
+}

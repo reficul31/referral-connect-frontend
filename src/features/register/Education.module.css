@@ -1,0 +1,162 @@
+.educationContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.educationTitle {
+    height: 30px;
+    font-size: 20px;
+    padding-top: 20px;
+    font-weight: 300;
+}
+
+.educationStaging {
+    width: 100%;
+    height: 75%;
+    min-height: 350px;
+    display: flex;
+    flex-direction: row;
+}
+
+.educationLeft {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.educationLabel {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.educationInput {
+    font-size: 15px;
+    padding: 2px;
+    box-sizing: border-box;
+    height: 30px;
+    border: 1px solid #D5D4D4;
+    width: 90%;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.educationDate {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.educationSubmit {
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 90px;
+    height: 40px;
+    color: #F5757C;
+    background: #FFFFFF;
+    border: 1px solid #F5757C;
+}
+
+.educationRight {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    border: 1px solid #D5D4D4;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.educationAdded {
+    box-sizing: border-box;
+    width: 100%;
+    height: 90px;
+    border: 1px solid #D5D4D4;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.educationAddedInfo {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.educationAddedInfo p {
+    font-size: 20px;
+    margin: 0 0 0 10px;
+}
+
+.educationAddedButtons {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.educationAddedButtons div {
+    cursor: pointer;
+    width:  50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.educationAddedButtons div img{
+    margin: 0 auto;
+    width: 20px;
+    height: auto;
+}
+
+.educationAddedButtonsEdit {
+    box-sizing: border-box;
+    border: 1px solid #F5757C;
+    background-color: transparent;
+}
+
+.educationAddedButtonsDelete {
+    border: none;
+    background-color: #F5757C;
+}
+
+.educationFooter {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.educationButtonContainer {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.educationClearButton {
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 130px;
+    height: 50px;
+    color: #F5757C;
+    background: #FFFFFF;
+    border: 1px solid #F5757C;
+}
+
+.educationNextButton {
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 130px;
+    height: 50px;
+    color: #FFFFFF;
+    background: #F5757C;
+    border: none;
+}
