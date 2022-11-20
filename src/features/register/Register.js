@@ -12,7 +12,7 @@ export function Register({currentTabKey, changeTab}) {
         return (<UploadResume nextTab={() => changeTab(3)} />);
     } else if (currentTabKey === 3) {
         return (<Experience nextTab={() => changeTab(4)} />);
-    } else if (currentTabKey == 4) {
+    } else if (currentTabKey === 4) {
         return (<Education />)
     }
     
