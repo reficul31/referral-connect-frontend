@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import deleteIcon from './deleteIcon.png';
 import editIcon from './editIcon.png';
 import styles from './Education.module.css';
-import { selectEducation, addEducation, removeEducation } from './registerSlice';
+import { selectEducation, addEducation, removeEducation, queryAsync } from './registerSlice';
 
-export function Education({nextTab}) {
+export function Education() {
     const dispatch = useDispatch();
     const education = useSelector(selectEducation);
 
@@ -46,9 +46,9 @@ export function Education({nextTab}) {
         education.map(e => dispatch(removeEducation(e)));
     }
 
-    const handleNext = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        nextTab();
+        dispatch(queryAsync());
     }
 
     return (
@@ -102,7 +102,7 @@ export function Education({nextTab}) {
             <div className={styles.educationFooter}>
                 <span className={styles.educationButtonContainer}>
                     <button className={styles.educationClearButton} onClick={clearAllFields}>CLEAR</button>
-                    <button className={styles.educationNextButton} onClick={handleNext}>NEXT</button>
+                    <button className={styles.educationNextButton} onClick={handleSubmit}>SUBMIT</button>
                 </span>
             </div>
         </div>

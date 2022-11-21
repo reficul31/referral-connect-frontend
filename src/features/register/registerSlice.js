@@ -20,7 +20,8 @@ const initialState = {
 
 export const queryAsync = createAsyncThunk(
     'register/queryAsync',
-    async (data) => {
+    async (_, thunkAPI) => {
+        const data = thunkAPI.getState().register;
         const response = await register(data);
         return response.data;
     }
