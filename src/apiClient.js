@@ -34,3 +34,14 @@ export async function myReferrals() {
         }]
     };
 }
+
+export async function giveReferrals() {
+    return {
+        data: [{
+            name: 'Shivang Bharadwaj',
+            role: 'Applied Scientist',
+            link: 'https://google.com',
+            score: '80'
+        }]
+    };
+}
