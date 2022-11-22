@@ -3,6 +3,7 @@ import counterReducer from '../features/counter/counterSlice';
 import loginReducer from '../features/login/loginSlice';
 import registerReducer from '../features/register/registerSlice';
 import getReferralsReducer from '../features/getreferrals/getReferralsSlice';
+import myReferralsReducer from '../features/myreferrals/myReferralsSlice';
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
@@ -12,6 +13,7 @@ export const store = configureStore({
     counter: counterReducer,
     login: loginReducer,
     register: registerReducer,
-    getReferrals: getReferralsReducer
+    getReferrals: getReferralsReducer,
+    myReferrals: myReferralsReducer
   },
 });

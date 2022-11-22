@@ -1,21 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-import { getReferrals } from '../../apiClient';
+import { myReferrals } from '../../apiClient';
 
 const initialState = {
-  status: 'idle'
+    referrals: [],
+    status: 'idle'
 };
 
 export const queryAsync = createAsyncThunk(
-    'getReferrals/queryAsync',
-    async (data) => {
-        const response = await getReferrals(data);
+    'myReferrals/queryAsync',
+    async () => {
+        const response = await myReferrals();
         return response.data;
     }
 );
 
-export const getReferralsSlice = createSlice({
-    name: 'getReferrals',
+export const myReferralsSlice = createSlice({
+    name: 'myReferrals',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
@@ -25,10 +26,11 @@ export const getReferralsSlice = createSlice({
             })
             .addCase(queryAsync.fulfilled, (state, action) => {
                 state.status = 'idle';
+                state.referrals = action.payload;
             });
     }
 });
 
-export const selectStatus = (state) => state.getReferrals.status;
+export const selectReferrals = (state) => state.myReferrals.referrals;
 
-export default getReferralsSlice.reducer;
+export default myReferralsSlice.reducer;

@@ -23,3 +23,14 @@ export async function getReferrals(data) {
         data: null
     };
 }
+
+export async function myReferrals() {
+    return {
+        data: [{
+            company: 'Amazon',
+            role: 'Applied Scientist',
+            link: 'https://google.com',
+            status: 'Queued'
+        }]
+    };
+}

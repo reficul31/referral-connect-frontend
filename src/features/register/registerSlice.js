@@ -54,17 +54,17 @@ export const registerSlice = createSlice({
     },
     removeEducation: (state, action) => {
       state.education = state.education.filter((e) => e.level !== action.payload.level && e.college !== action.payload.college)
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(queryAsync.pending, (state) => {
-                state.status = 'loading';
-            })
-            .addCase(queryAsync.fulfilled, (state, action) => {
-                state.status = 'idle';
-            });
-    },
-  }
+    }
+  },
+  extraReducers: (builder) => {
+    builder
+        .addCase(queryAsync.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(queryAsync.fulfilled, (state, action) => {
+            state.status = 'idle';
+        });
+  },
 });
 
 export const { setPersonalInfo, setResume, addExperience, removeExperience, addEducation, removeEducation } = registerSlice.actions;

@@ -25,16 +25,16 @@ export const loginSlice = createSlice({
     },
     setPassword: (state, action) => {
       state.password = action.payload;
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(queryAsync.pending, (state) => {
-                state.status = 'loading';
-            })
-            .addCase(queryAsync.fulfilled, (state, action) => {
-                state.status = 'idle';
-            });
-    },
+    }
+  },
+  extraReducers: (builder) => {
+    builder
+        .addCase(queryAsync.pending, (state) => {
+            state.status = 'loading';
+        })
+        .addCase(queryAsync.fulfilled, (state, action) => {
+            state.status = 'idle';
+        });
   }
 });
 
