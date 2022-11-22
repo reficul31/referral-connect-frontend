@@ -16,3 +16,10 @@ export async function register(data) {
         data: null
     };
 }
+
+export async function getReferrals(data) {
+    console.log(client, data);
+    return {
+        data: null
+    };
+}

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 
+import { GetReferrals } from '../../features/getreferrals/GetReferrals';
+
 import background from './background.jpg';
 import styles from './DashboardPage.module.css';
 
@@ -27,7 +29,7 @@ export function DashboardPage() {
                     <Routes>
                         <Route index element={<h1>My Referrals</h1>} />
                         <Route path="/myreferrals" element={<h1>My Referrals</h1>} />
-                        <Route path="/getreferrals" element={<h1>Get Referrals</h1>} />
+                        <Route path="/getreferrals" element={<GetReferrals />} />
                         <Route path="/givereferrals" element={<h1>Give Referrals</h1>} />
                     </Routes>
                 </div>
