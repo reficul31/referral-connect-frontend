@@ -1,7 +1,44 @@
 import axios from 'axios';
 
-const baseURL = '';
+const baseURL = 'https://ygpa4r9phd.execute-api.us-east-1.amazonaws.com/PROD';
+const S3_URL = 'https://referral-connect-resumes.s3.amazonaws.com/';
+
+const UPLOAD_PATH = '/upload';
+const REGISTER_PATH = '/register';
+
 const client = axios.create({baseURL});
+
+export async function register(data) {
+    const { resume } = data;
+    const body = await resume.arrayBuffer();
+    const fileName = (Math.random() + 1).toString(36).substring(2) + '.pdf';
+    const args = {
+        headers: {
+            'Content-Type': resume.type,
+            'key': fileName
+        }
+    };
+    const responseUpload = await client.put(UPLOAD_PATH, body, args);
+    if (responseUpload.status !== 200) {
+        return {
+            data: 'Upload unsuccessful'
+        }
+    };
+
+    let dataCopy = Object.assign({}, data);
+    dataCopy['resume'] = S3_URL + fileName;
+    delete dataCopy['status'];
+    
+    const response = await client.post(REGISTER_PATH, dataCopy);
+    if (response.status !== 200) {
+        return {
+            data: 'Registration unsuccessful'
+        }
+    }
+    return {
+        data: null
+    };
+}
 
 export async function login(data) {
     console.log(client, data);
@@ -10,12 +47,6 @@ export async function login(data) {
     };
 }
 
-export async function register(data) {
-    console.log(client, data);
-    return {
-        data: null
-    };
-}
 
 export async function getReferrals(data) {
     console.log(client, data);
