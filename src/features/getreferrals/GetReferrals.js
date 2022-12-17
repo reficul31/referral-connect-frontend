@@ -10,6 +10,8 @@ export function GetReferrals() {
     const [role, setRole] = useState('');
     const [link, setLink] = useState('');
     const [description, setDescription] = useState('');
+    const [requiredQualifications, setRequiredQualifications] = useState('');
+    const [preferredQualifications, setPreferredQualifications] = useState('');
 
     const clearAllFields = (e) => {
         e.preventDefault();
@@ -17,11 +19,13 @@ export function GetReferrals() {
         setRole('');
         setLink('');
         setDescription('');
+        setRequiredQualifications('');
+        setPreferredQualifications('');
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(queryAsync({company, role, link, description}))
+        dispatch(queryAsync({company, role, link, description, requiredQualifications, preferredQualifications}))
     }
 
     return (
@@ -42,7 +46,15 @@ export function GetReferrals() {
                 </span>
                 <span>
                     <p className={styles.getReferralsLabel}>Job Description</p>
-                    <textarea className={styles.getReferralsInput} value={description} onChange={e => setDescription(e.target.value)} style={{height: 'auto'}} type="text" rows="12" />
+                    <textarea className={styles.getReferralsInput} value={description} onChange={e => setDescription(e.target.value)} style={{height: 'auto'}} type="text" rows="3" />
+                </span>
+                <span>
+                    <p className={styles.getReferralsLabel}>Required Qualifications</p>
+                    <textarea className={styles.getReferralsInput} value={requiredQualifications} onChange={e => setRequiredQualifications(e.target.value)} style={{height: 'auto'}} type="text" rows="3" />
+                </span>
+                <span>
+                    <p className={styles.getReferralsLabel}>Preferred Qualifications</p>
+                    <textarea className={styles.getReferralsInput} value={preferredQualifications} onChange={e => setPreferredQualifications(e.target.value)} style={{height: 'auto'}} type="text" rows="3" />
                 </span>
                 <div className={styles.getReferralsFooter}>
                     <span className={styles.getReferralsButtonContainer}>

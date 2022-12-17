@@ -5,6 +5,7 @@ const S3_URL = 'https://referral-connect-resumes.s3.amazonaws.com/';
 
 const UPLOAD_PATH = '/upload';
 const REGISTER_PATH = '/register';
+const GET_REFERRALS_PATH = '/askreferral';
 
 const client = axios.create({baseURL});
 
@@ -49,7 +50,16 @@ export async function login(data) {
 
 
 export async function getReferrals(data) {
-    console.log(client, data);
+    console.log(data);
+    const response = await client.post(GET_REFERRALS_PATH, data);
+    console.log(response);
+
+    if (response.status !== 200) {
+        return {
+            data: 'Registration unsuccessful'
+        }
+    }
+    
     return {
         data: null
     };
