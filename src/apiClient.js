@@ -6,6 +6,8 @@ const S3_URL = 'https://referral-connect-resumes.s3.amazonaws.com/';
 const UPLOAD_PATH = '/upload';
 const REGISTER_PATH = '/register';
 const GET_REFERRALS_PATH = '/askreferral';
+const GIVE_REFERRALS_PATH = '/givereferral';
+const MY_REFERRALS_PATH = '/my-referral';
 
 const client = axios.create({baseURL});
 
@@ -59,30 +61,38 @@ export async function getReferrals(data) {
             data: 'Registration unsuccessful'
         }
     }
-    
+
     return {
         data: null
     };
 }
 
 export async function myReferrals() {
+    const response = await client.get(MY_REFERRALS_PATH);
+    console.log(response);
+
+    if (response.status !== 200) {
+        return {
+            data: []
+        };
+    }
+
     return {
-        data: [{
-            company: 'Amazon',
-            role: 'Applied Scientist',
-            link: 'https://google.com',
-            status: 'Queued'
-        }]
+        data: response.data
     };
 }
 
 export async function giveReferrals() {
+    const response = await client.get(GIVE_REFERRALS_PATH);
+    console.log(response);
+
+    if (response.status !== 200) {
+        return {
+            data: []
+        };
+    }
+
     return {
-        data: [{
-            name: 'Shivang Bharadwaj',
-            role: 'Applied Scientist',
-            link: 'https://google.com',
-            score: '80'
-        }]
+        data: response.data
     };
 }

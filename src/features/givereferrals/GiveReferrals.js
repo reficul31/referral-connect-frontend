@@ -41,7 +41,7 @@ export function GiveReferrals() {
                         referrals.map((referral, idx) => (
                             <tr key={idx} className={styles.giveReferralsTableRow}>
                                 <td style={{width:'30%'}}>
-                                    <p>{referral.name}</p>
+                                    <p><a href={referral.resume}>{referral.name}</a></p>
                                     <p style={{color: 'grey'}}>{referral.role}</p>
                                 </td>
                                 <td style={{width:'20%'}}><a href={referral.link}>Link</a></td>
