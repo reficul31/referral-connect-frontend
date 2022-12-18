@@ -8,6 +8,7 @@ const REGISTER_PATH = '/register';
 const GET_REFERRALS_PATH = '/askreferral';
 const GIVE_REFERRALS_PATH = '/givereferral';
 const MY_REFERRALS_PATH = '/my-referral';
+const LOGIN_PATH = '/login';
 
 const client = axios.create({baseURL});
 
@@ -43,10 +44,16 @@ export async function register(data) {
     };
 }
 
-export async function login(data) {
-    console.log(client, data);
+export async function login(data, rejectWithValue) {
+    const response = await client.post(LOGIN_PATH, data);
+    console.log(response);
+
+    if (response.status !== 200) {
+        rejectWithValue(response.data);
+    }
+
     return {
-        data: null
+        data: response.data
     };
 }
 
