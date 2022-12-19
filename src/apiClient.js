@@ -27,6 +27,8 @@ export async function register(data) {
 
     let dataCopy = Object.assign({}, data);
     dataCopy['resume'] = S3_URL + fileName;
+    delete dataCopy['error'];
+    delete dataCopy['info'];
     delete dataCopy['status'];
     
     return await client.post(REGISTER_PATH, dataCopy);
