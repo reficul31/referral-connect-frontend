@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { register } from '../../apiClient';
+import { shallowEqual } from '../../utils';
 
 const initialState = {
   personalInformation: {
@@ -57,13 +58,13 @@ export const registerSlice = createSlice({
       state.experience = [...state.experience, action.payload];
     },
     removeExperience: (state, action) => {
-      state.experience = state.experience.filter((e) => e.company !== action.payload.company && e.role !== action.payload.role)
+      state.experience = state.experience.filter((e) => !shallowEqual(e, action.payload))
     },
     addEducation: (state, action) => {
       state.education = [...state.education, action.payload];
     },
     removeEducation: (state, action) => {
-      state.education = state.education.filter((e) => e.level !== action.payload.level && e.college !== action.payload.college)
+      state.education = state.education.filter((e) => !shallowEqual(e, action.payload))
     }
   },
   extraReducers: (builder) => {

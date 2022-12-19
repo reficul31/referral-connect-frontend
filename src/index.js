@@ -7,9 +7,9 @@ import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 
-import { ProtectedRoute } from './ProtectedRoute';
-import { store } from './app/store';
 import './index.css';
+import { ProtectedRoute } from './utils';
+import { store } from './app/store';
 import { AuthProvider } from './authProvider';
 
 createRoot(document.getElementById('root')).render(
