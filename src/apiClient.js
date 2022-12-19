@@ -36,7 +36,6 @@ export async function login(data) {
     return await client.post(LOGIN_PATH, data);
 }
 
-
 export async function getReferrals(data, headers) {
     return await client.post(GET_REFERRALS_PATH, data, {headers});
 }
@@ -47,4 +46,8 @@ export async function myReferrals(headers) {
 
 export async function giveReferrals(headers) {
     return await client.get(GIVE_REFERRALS_PATH, {headers});
+}
+
+export async function giveReferral(data, headers) {
+    return await client.post(GIVE_REFERRALS_PATH, data, {headers});
 }

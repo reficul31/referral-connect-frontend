@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from '../../authProvider';
 
 import styles from './GiveReferrals.module.css';
-import { queryAsync, selectError, selectReferrals } from './giveReferralsSlice';
+import { giveReferralAsync, queryAsync, removeReferral, selectError, selectInfo, selectReferrals } from './giveReferralsSlice';
 
 export function GiveReferrals() {
     const auth = useAuth();
     const dispatch = useDispatch();
 
     const error = useSelector(selectError);
+    const info = useSelector(selectInfo);
     const referrals = useSelector(selectReferrals);
 
     useEffect(() => {
@@ -19,19 +20,21 @@ export function GiveReferrals() {
     const handleAccept = (e, referral) => {
         e.preventDefault();
 
-        console.log(referral);
+        dispatch(giveReferralAsync({secret: auth.user, data: referral}))
+        dispatch(removeReferral(referral));
     }
 
     const handleDecline = (e, referral) => {
         e.preventDefault();
 
-        console.log(referral);
+        dispatch(removeReferral(referral));
     }
 
     return (
         <div className={styles.giveReferralsContainer}>
             <h1>Give Referrals</h1>
             <div style={{color: 'red'}}>{error}</div>
+            <div style={{color: 'green'}}>{info}</div>
             <table className={styles.giveReferralsTable}>
                 <thead>
                     <tr className={styles.giveReferralsTableRow} style={{backgroundColor: '#D9D9D9', height: '40px'}}>
