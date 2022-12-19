@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import deleteIcon from './deleteIcon.png';
 import editIcon from './editIcon.png';
 import styles from './Education.module.css';
-import { selectEducation, addEducation, removeEducation, queryAsync } from './registerSlice';
+import { selectEducation, addEducation, removeEducation, queryAsync, selectError, selectInfo } from './registerSlice';
 
 export function Education() {
     const dispatch = useDispatch();
+
+    const error = useSelector(selectError);
+    const info = useSelector(selectInfo);
     const education = useSelector(selectEducation);
 
     const [level, setLevel] = useState('');
@@ -105,6 +108,8 @@ export function Education() {
                     <button className={styles.educationNextButton} onClick={handleSubmit}>SUBMIT</button>
                 </span>
             </div>
+            <div style={{color: 'red'}}>{error}</div>
+            <div style={{color: 'green'}}>{info}</div>
         </div>
     );
 }

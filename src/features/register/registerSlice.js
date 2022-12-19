@@ -15,15 +15,25 @@ const initialState = {
   resume: null,
   experience: [],
   education: [],
+  error: '',
+  info: '',
   status: 'idle'
 };
 
 export const queryAsync = createAsyncThunk(
     'register/queryAsync',
     async (_, thunkAPI) => {
+      try {
         const data = thunkAPI.getState().register;
         const response = await register(data);
-        return response.data;
+        if (response.status === 200) {
+          return response.data;
+        } else {
+          return thunkAPI.rejectWithValue(response.data);
+        }
+      } catch(error) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
     }
 );
 
@@ -59,16 +69,27 @@ export const registerSlice = createSlice({
   extraReducers: (builder) => {
     builder
         .addCase(queryAsync.pending, (state) => {
-            state.status = 'loading';
+          state.error = '';
+          state.info = '';
+          state.status = 'loading';
+        })
+        .addCase(queryAsync.rejected, (state, action) => {
+          state.error = action.payload;
+          state.info = '';
+          state.status = 'idle';
         })
         .addCase(queryAsync.fulfilled, (state, action) => {
-            state.status = 'idle';
+          state.error = '';
+          state.info = action.payload;
+          state.status = 'idle';
         });
   },
 });
 
 export const { setPersonalInfo, setResume, addExperience, removeExperience, addEducation, removeEducation } = registerSlice.actions;
 
+export const selectError = (state) => state.register.error;
+export const selectInfo = (state) => state.register.info;
 export const selectPersonalInfo = (state) => state.register.personalInformation;
 export const selectResume = (state) => state.register.resume;
 export const selectExperience = (state) => state.register.experience;

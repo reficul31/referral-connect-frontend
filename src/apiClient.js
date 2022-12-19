@@ -23,83 +23,28 @@ export async function register(data) {
         }
     };
     const responseUpload = await client.put(UPLOAD_PATH, body, args);
-    if (responseUpload.status !== 200) {
-        return {
-            data: 'Upload unsuccessful'
-        }
-    };
+    console.log(responseUpload);
 
     let dataCopy = Object.assign({}, data);
     dataCopy['resume'] = S3_URL + fileName;
     delete dataCopy['status'];
     
-    const response = await client.post(REGISTER_PATH, dataCopy);
-    if (response.status !== 200) {
-        return {
-            data: 'Registration unsuccessful'
-        }
-    }
-    return {
-        data: null
-    };
+    return await client.post(REGISTER_PATH, dataCopy);
 }
 
-export async function login(data, rejectWithValue) {
-    const response = await client.post(LOGIN_PATH, data);
-    console.log(response);
-
-    if (response.status !== 200) {
-        rejectWithValue(response.data);
-    }
-
-    return {
-        data: response.data
-    };
+export async function login(data) {
+    return await client.post(LOGIN_PATH, data);
 }
 
 
-export async function getReferrals(data) {
-    console.log(data);
-    const response = await client.post(GET_REFERRALS_PATH, data);
-    console.log(response);
-
-    if (response.status !== 200) {
-        return {
-            data: 'Registration unsuccessful'
-        }
-    }
-
-    return {
-        data: null
-    };
+export async function getReferrals(data, headers) {
+    return await client.post(GET_REFERRALS_PATH, data, {headers});
 }
 
-export async function myReferrals() {
-    const response = await client.get(MY_REFERRALS_PATH);
-    console.log(response);
-
-    if (response.status !== 200) {
-        return {
-            data: []
-        };
-    }
-
-    return {
-        data: response.data
-    };
+export async function myReferrals(headers) {
+    return await client.get(MY_REFERRALS_PATH, {headers});
 }
 
-export async function giveReferrals() {
-    const response = await client.get(GIVE_REFERRALS_PATH);
-    console.log(response);
-
-    if (response.status !== 200) {
-        return {
-            data: []
-        };
-    }
-
-    return {
-        data: response.data
-    };
+export async function giveReferrals(headers) {
+    return await client.get(GIVE_REFERRALS_PATH, {headers});
 }
