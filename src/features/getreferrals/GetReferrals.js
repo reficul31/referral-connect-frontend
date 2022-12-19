@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useAuth } from '../../authProvider';
 
 import styles from './GetReferrals.module.css';
-import { queryAsync } from './getReferralsSlice';
+import { queryAsync, selectError, selectInfo } from './getReferralsSlice';
 
 export function GetReferrals() {
+    const auth = useAuth();
     const dispatch = useDispatch();
+
+    const error = useSelector(selectError);
+    const info = useSelector(selectInfo);
+
     const [company, setCompany] = useState('');
     const [role, setRole] = useState('');
     const [link, setLink] = useState('');
@@ -25,12 +31,14 @@ export function GetReferrals() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(queryAsync({company, role, link, description, requiredQualifications, preferredQualifications}))
+        dispatch(queryAsync({secret: auth.user, data: {company, role, link, description, requiredQualifications, preferredQualifications}}))
     }
 
     return (
         <div className={styles.getReferralsContainer}>
             <h1>Get Referrals</h1>
+            <div style={{color: 'red'}}>{error}</div>
+            <div style={{color: 'green'}}>{info}</div>
             <form className={styles.getReferralsForm} onSubmit={handleSubmit}>
                 <span>
                     <p className={styles.getReferralsLabel}>Company</p>
