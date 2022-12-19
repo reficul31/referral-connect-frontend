@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../authProvider';
 
 import { GetReferrals } from '../../features/getreferrals/GetReferrals';
 import { GiveReferrals } from '../../features/givereferrals/GiveReferrals';
@@ -9,6 +10,15 @@ import background from './background.jpg';
 import styles from './DashboardPage.module.css';
 
 export function DashboardPage() {
+    const auth = useAuth();
+    const navigate = useNavigate();
+
+    const logoutHandler = (e) => {
+        e.preventDefault();
+        auth && auth.logout();
+        navigate("/login");
+    }
+
     return (
         <div className={styles.dashboardContainer}>
             <div className={styles.dashboardNavigation} style={{ backgroundImage: `url(${background})` }}>
@@ -25,7 +35,7 @@ export function DashboardPage() {
             </div>
             <div className={styles.dashboardContent}>
                 <div className={styles.dashboardLogoutNavigation}>
-                    <span>LOGOUT</span>
+                    <span onClick={e => logoutHandler(e)}>LOGOUT</span>
                 </div>
                 <div className={styles.dashboardStaging}>
                     <Routes>

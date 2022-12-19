@@ -3,18 +3,23 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './Login.module.css';
-import { queryAsync, selectEmail, selectIsAuthenticated, selectPassword, selectSecret, setEmail, setPassword } from './loginSlice';
+import { queryAsync, selectEmail, selectIsAuthenticated, selectPassword, selectSecret, setEmail, setIsAuthenticated, setPassword, setSecret } from './loginSlice';
+import { useAuth } from '../../authProvider';
 
 export function Login() {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const email = useSelector(selectEmail);
     const password = useSelector(selectPassword);
     const isAuthenticated = useSelector(selectIsAuthenticated);
     const secret = useSelector(selectSecret);
+    const auth = useAuth();
+    const navigate = useNavigate();
 
     if (isAuthenticated && secret !== '') {
-        navigate('/');
+        auth && auth.login(secret);
+        dispatch(setIsAuthenticated(false));
+        dispatch(setSecret(''));
+        navigate("/");
     }
 
     const handleSubmit = (e) => {

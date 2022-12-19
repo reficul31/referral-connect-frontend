@@ -7,18 +7,22 @@ import { DashboardPage } from './pages/DashboardPage/DashboardPage';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { RegisterPage } from './pages/RegisterPage/RegisterPage';
 
+import { ProtectedRoute } from './ProtectedRoute';
 import { store } from './app/store';
 import './index.css';
+import { AuthProvider } from './authProvider';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register/*" element={<RegisterPage />} />
-          <Route path="/*" element={<DashboardPage />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register/*" element={<RegisterPage />} />
+            <Route path="/*" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
