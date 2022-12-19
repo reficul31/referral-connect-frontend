@@ -4,14 +4,24 @@ import { giveReferrals } from '../../apiClient';
 
 const initialState = {
     referrals: [],
-    status: 'idle'
+    status: 'idle',
+    error: ''
 };
 
 export const queryAsync = createAsyncThunk(
     'giveReferrals/queryAsync',
-    async () => {
-        const response = await giveReferrals();
-        return response.data;
+    async ({secret}, {rejectWithValue}) => {
+        try {
+            const headers = { secret };
+            const response = await giveReferrals(headers);
+            if (response.status === 200) {
+                return response.data;
+            } else {
+                return rejectWithValue(response.data);
+            }
+        } catch(error) {
+            return rejectWithValue(error.response.data);
+        }
     }
 );
 
@@ -22,15 +32,23 @@ export const giveReferralsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(queryAsync.pending, (state) => {
+                state.error = '';
                 state.status = 'loading';
+            })
+            .addCase(queryAsync.rejected, (state, action) => {
+                state.status = 'idle';
+                state.error = action.payload;
+                state.referrals = [];
             })
             .addCase(queryAsync.fulfilled, (state, action) => {
                 state.status = 'idle';
+                state.error = '';
                 state.referrals = action.payload;
             });
     }
 });
 
+export const selectError = (state) => state.giveReferrals.error;
 export const selectReferrals = (state) => state.giveReferrals.referrals;
 
 export default giveReferralsSlice.reducer;
